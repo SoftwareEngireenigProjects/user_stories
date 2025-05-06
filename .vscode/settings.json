@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "User Sign-up/src"
+        "User Sign-up/src",
+        "User Login/src"
     ]
 }

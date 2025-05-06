@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class Main {
+public class SignUp {
 
     public static void main(String[] args) {
         displaySignUpPage();
@@ -9,6 +9,7 @@ public class Main {
 
     public static void displaySignUpPage() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("==== Welcome to Invest Wise ====");
         System.out.println("==== Sign Up ====");
     
         System.out.print("Enter Name: ");
