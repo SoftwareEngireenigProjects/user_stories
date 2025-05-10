@@ -6,12 +6,25 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * This class handles the process of connecting a bank account by validating
+ * user input, checking card details against a database, and verifying OTP.
+ */
 public class BankAccountConnector {
 
+    /**
+     * Validates the card details against the database.
+     *
+     * @param cardNumber The card number to validate.
+     * @param name       The cardholder's name.
+     * @param expiry     The expiry date of the card (MM/YY).
+     * @param cvv        The CVV of the card.
+     * @return true if the card details are valid and found in the database, false otherwise.
+     */
     public static boolean isValidCard(String cardNumber, String name, String expiry, String cvv) {
         try (BufferedReader br = new BufferedReader(new FileReader("p:\\Sophomore_SecTerm\\Software Engineering\\assignment2\\user_stories\\database\\bank_accounts.csv"))) {
             String line;
-            br.readLine(); // skip header
+            br.readLine(); // Skip header
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 4 &&
@@ -28,13 +41,28 @@ public class BankAccountConnector {
         return false;
     }
 
+    /**
+     * Validates the format of the card details.
+     *
+     * @param cardNumber The card number to validate.
+     * @param name       The cardholder's name.
+     * @param expiry     The expiry date of the card (MM/YY).
+     * @param cvv        The CVV of the card.
+     * @return true if all inputs are in the correct format, false otherwise.
+     */
     public static boolean isValidFormat(String cardNumber, String name, String expiry, String cvv) {
         return cardNumber.matches("\\d{16}") &&
-            name.matches("[a-zA-Z ]+") &&  
-            expiry.matches("(0[1-9]|1[0-2])/\\d{2}") &&
-            cvv.matches("\\d{3}");
+                name.matches("[a-zA-Z ]+") &&
+                expiry.matches("(0[1-9]|1[0-2])/\\d{2}") &&
+                cvv.matches("\\d{3}");
     }
 
+    /**
+     * The main method that drives the program. It handles user input, validates
+     * card details, and verifies OTP for connecting a bank account.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("=== Connect Bank Account ===");
@@ -98,7 +126,7 @@ public class BankAccountConnector {
                     continue;
                 }
 
-                break; 
+                break;
             }
 
             // OTP
