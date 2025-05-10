@@ -3,12 +3,26 @@ import java.nio.file.*;
 import java.time.LocalDate;
 import java.util.*;
 
+/**
+ * Main class for managing financial goals in Invest Wise.
+ * Provides functionality to add new goals, view existing goals, and save them to a file.
+ */
 public class FinancialGoals {
 
+    /** Scanner object for reading user input. */
     static Scanner input = new Scanner(System.in);
+
+    /** Path to the file where financial goals are stored. */
     static final String GOALS_FILE = "database/goals.txt";
+
+    /** List of predefined goal types. */
     static final List<String> GOAL_TYPES = Arrays.asList("Retirement", "Wealth Accumulation");
 
+    /**
+     * Entry point of the program.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         System.out.println("\n==== Financial Goals Management ====");
 
@@ -35,6 +49,10 @@ public class FinancialGoals {
         }
     }
 
+    /**
+     * Prompts the user to add a new financial goal.
+     * Validates user input and saves the goal to the storage file.
+     */
     public static void addNewGoal() {
         String type = "";
         while (true) {
@@ -42,10 +60,10 @@ public class FinancialGoals {
             for (int i = 0; i < GOAL_TYPES.size(); i++) {
                 System.out.println((i + 1) + ". " + GOAL_TYPES.get(i));
             }
-    
+
             System.out.print("Enter Goal Type Number (e.g., 1 or 2): ");
             String choiceStr = input.nextLine().trim();
-    
+
             try {
                 int choice = Integer.parseInt(choiceStr);
                 if (choice >= 1 && choice <= GOAL_TYPES.size()) {
@@ -58,40 +76,43 @@ public class FinancialGoals {
                 System.out.println("Please enter a valid number.");
             }
         }
-    
+
         System.out.print("Enter Target Amount: ");
         String targetStr = input.nextLine().trim();
-    
+
         System.out.print("Enter Deadline (YYYY-MM-DD): ");
         String deadlineStr = input.nextLine().trim();
-    
+
         System.out.print("Enter Current Progress: ");
         String progressStr = input.nextLine().trim();
-    
+
         if (targetStr.isEmpty() || deadlineStr.isEmpty() || progressStr.isEmpty()) {
             System.out.println("Please fill in all required fields.");
             return;
         }
-    
+
         try {
             double target = Double.parseDouble(targetStr);
             double progress = Double.parseDouble(progressStr);
             LocalDate deadline = LocalDate.parse(deadlineStr);
-    
+
             if (target <= 0 || progress < 0) {
                 System.out.println("Amounts must be valid numbers (target > 0, progress ≥ 0).");
                 return;
             }
-    
+
             saveGoal(type, target, deadlineStr, progress);
             System.out.println("Goal saved successfully!");
-    
+
         } catch (Exception e) {
             System.out.println("Invalid input. Please enter valid numbers and date.");
         }
     }
-    
 
+    /**
+     * Displays all financial goals stored in the file.
+     * Reads the goals from the file and prints them to the console.
+     */
     public static void viewGoals() {
         Path path = Paths.get(GOALS_FILE);
         if (!Files.exists(path)) {
@@ -123,6 +144,14 @@ public class FinancialGoals {
         }
     }
 
+    /**
+     * Saves a financial goal to the storage file.
+     *
+     * @param type     The type of the financial goal (e.g., Retirement).
+     * @param target   The target amount for the goal.
+     * @param deadline The deadline for achieving the goal.
+     * @param progress The current progress toward the goal.
+     */
     public static void saveGoal(String type, double target, String deadline, double progress) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(GOALS_FILE, true))) {
             writer.write(type + "," + target + "," + deadline + "," + progress);
