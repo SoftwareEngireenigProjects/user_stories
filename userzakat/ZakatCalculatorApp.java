@@ -1,6 +1,8 @@
-package userstories.userzakat;
+package user_stories.userzakat;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class ZakatCalculatorApp {
     public static void main(String[] args) {

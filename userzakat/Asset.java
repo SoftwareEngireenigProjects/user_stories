@@ -1,4 +1,4 @@
-package User-Stories.UserZakat;
+package user_stories.userzakat;
 
 public class Asset {
     String name;

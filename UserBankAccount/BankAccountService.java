@@ -1,4 +1,4 @@
-package userstories.userbankaccount;
+package user_stories.userbankaccount;
 
 import java.util.ArrayList;
 import java.util.List;

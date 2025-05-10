@@ -1,4 +1,4 @@
-package UserBankAccount;
+package user_stories.UserBankAccount;
 
 public class App {
     public static void main(String[] args) {

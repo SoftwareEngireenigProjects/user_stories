@@ -1,3 +1,5 @@
+package user_stories.userbankaccount;
+
 public class BankAccount {
     private int id;
     private String bankName;
