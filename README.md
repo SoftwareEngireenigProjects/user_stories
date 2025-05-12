@@ -1,4 +1,4 @@
-## File Descriptions
+## User stories Descriptions
 
 ### **Assets Module**
 - **`Asset.java`**: Represents an individual asset with properties like ID, name, quantity, price, type, and purchase date.
@@ -28,16 +28,6 @@
 - **`assets.txt`**: Stores asset details for the portfolio.
 
 
-
-## How to Run
-
-1. Clone the repository or download the source code.
-2. Open the project in your preferred Java IDE (e.g., IntelliJ IDEA, Eclipse, or Visual Studio Code).
-3. Compile and run the desired module (e.g., `Main.java` for asset management or `ZakatCalculatorApp.java` for Zakat calculation).
-4. Follow the on-screen instructions for each module.
-
----
-
 ## Features
 
 - **Asset Management**: Add, view, edit, and remove assets.
@@ -47,15 +37,3 @@
 - **Bank Account Validation**: Verify card details and OTP.
 
 ---
-
-## Future Enhancements
-
-- Add a graphical user interface (GUI) for better user experience.
-- Implement advanced filtering and sorting for assets and goals.
-- Integrate with external APIs for real-time data (e.g., stock prices, currency rates).
-
----
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
