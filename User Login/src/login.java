@@ -79,7 +79,8 @@ public class login {
      * @return True if the username is unique, false otherwise.
      */
     public static boolean isUsernameUnique(String username) {
-        Path filePath = Paths.get("users.txt");
+        // path file inside database folder
+        Path filePath = Paths.get("database/users.txt");
 
         try {
             if (!Files.exists(filePath)) Files.createFile(filePath);
@@ -108,7 +109,7 @@ public class login {
      * @param password The user's password.
      */
     public static void saveUser(String name, String email, String username, String password) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("p:\\Sophomore_SecTerm\\Software Engineering\\assignment2\\user_stories\\database\\users.txt", true))) {
             writer.write(name + "," + email + "," + username + "," + password);
             writer.newLine();
         } catch (IOException e) {
